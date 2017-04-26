@@ -35,7 +35,7 @@
 <br />
 
 ## 三、為何Closure可以保存變數的值？
-#### 垃圾回收機制(Garbage Collection)  
+####  i.垃圾回收機制(Garbage Collection)  
 javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不到的記憶體,而實做的方式是自動釋放完全沒有被參考的物件所佔用的記憶體.
 
     var a = {value: 1};    // a 參考 {value: 1} 這個物件
@@ -48,7 +48,7 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     delete a;              // 全域變數 a 和 b 是儲存在global Object(Key/Value),所以只是value變成null,本身還是存在.
     delete b;              // 所以使用關鍵字delete來刪除global Object中的a和b,釋放所佔的記憶體.
 
-#### 題外話：記憶體洩漏(Memory Leak) : 以為已釋放的記憶體,但還有reference,所以還偷偷存在著.
+#### ii.題外話：記憶體洩漏(Memory Leak) : 以為已釋放的記憶體,但還有reference,所以還偷偷存在著.
 
     var a = {value: 1};
     var b = a;
@@ -60,7 +60,7 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
 
 > 所以使用 Closure 也有可能造成 Memory Leaking,要小心使用.
 
-#### 如果沒有使用Closure的話,函式內的區域變數就會被自動釋放.  
+#### iii.如果沒有使用Closure的話,函式內的區域變數就會被自動釋放.  
 
     function a() {
       var count = 0;       // count沒有被參考,所以使用後佔的記憶體就會被釋放.
@@ -71,7 +71,7 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     console.log(fn);  //1
     console.log(fn);  //1
 
-#### 使用Closure後,函式內的區域變數間接地被外部參考,所以不會被GC.
+#### iv.使用Closure後,函式內的區域變數間接地被外部參考,所以不會被GC.
 
     function a() {
       var count = 0;    // count 間接地被外部的fn參考.
