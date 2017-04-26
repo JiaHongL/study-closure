@@ -88,7 +88,7 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
                        // 所以 count 參考的 '0' 佔的記憶體並不會被釋放.
     console.log(f());  // 1
     console.log(f());  // 2
-> 全域變數並不會被GC,要等到瀏覽器關閉或重整才會釋放記憶體.
+> 全域變數並不會被GC,要等到瀏覽器關閉或重整才會釋放記憶體.  
 > 使用Closure的變數不會被GC,另一個意思使用Closure也會佔用記憶體.
 
 ## 四、從套件的角度理解Closure
