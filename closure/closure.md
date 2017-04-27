@@ -26,10 +26,10 @@
                 }
         }
 
-        let f = a();    //與外部變數連結,建立了一個closure.
-        f.increment();
-        f.increment();
-        console.log(f.getValue()); //2
+        let f = a();    //與外部變數連結,建立了一個closure.  
+        f.increment();  
+        f.increment();  
+        console.log(f.getValue()); //2  
         
 我們知道如果在函式內用var宣告變數時,就會形成區域變數,但區域變數的作用範圍只在函式內,而我們用函式來使用這些區域變數,然後再把函式return出去,與外部的變數做關連,所以可以從外部藉由調用這些函式,間接的調用函式內的區域變數/函式,這個過程就形成了Closure.
 > 會許我們已經用過了Closure,但可能並不明白這過程就是Closure的形成.
