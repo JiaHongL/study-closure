@@ -26,8 +26,8 @@
                 }
         }
 
-        let f = a();
-        f.increment();
+        let f = a();    //與外部變數連結,建立了一個closure.
+        f.increment();
         f.increment();
         console.log(f.getValue()); //2
         
@@ -128,7 +128,7 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
                 }
         }
 
-        global.MyCounter = counter; 
+        global.MyCounter = counter;   //與MyCounter連結,建立一個closure.
 
     })()
 > 立即函式 IIFE (Immediately Invoked Function Expression) : 如同字義,會立即執行函式 , 用法 => (function(arg){...})(in) 或 (function(arg){...}(in)).
