@@ -3,29 +3,29 @@
 // counter.js 內的程式碼
 // ----- counter.js ------
 (function () {
-    var count = 0;
+    function counter() {
+        var count = 0;
 
-    function defaultValue(value) {
-        count = value;
-    }
+        function defaultValue(value) {
+            count = value;
+        }
 
-    function getValue() {
-        return count;
-    }
+        function getValue() {
+            return count;
+        }
 
-    function increment() {
-        count++
-    }
+        function increment() {
+            count++
+        }
 
-    function decrement() {
-        count--
-    }
+        function decrement() {
+            count--
+        }
 
-    function reset() {
-        count = 0;
-    }
+        function reset() {
+            count = 0;
+        }
 
-    var counter = function () {
         return {
             defaultValue: defaultValue,
             getValue: getValue,
@@ -43,6 +43,7 @@
 //自己的程式
 // ----- mycode ------
 var counter = MyCounter();
+var counter2 = MyCounter();
 var count = 1000;
 console.log(counter.getValue()); // 0
 
@@ -53,6 +54,7 @@ console.log(counter.getValue()); // 102
 
 counter.decrement();
 console.log(counter.getValue()); // 101
+console.log(counter2.getValue()); // 0
 
 counter.reset();
 console.log(counter.getValue()); // 0
@@ -70,4 +72,3 @@ console.log(a); // null
 console.log(b); // {value:1} 
 b = null; // 當b也null時,這物件{value:1}就沒有被參考(referenced),就會自動被回收,釋放記憶體.
 console.log(b); // null
-

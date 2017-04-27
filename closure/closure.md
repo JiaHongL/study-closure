@@ -21,7 +21,7 @@
                 }
 
                 return {                      // 把函式return出去,間接形成公有函式.
-                        increment: increment, // 這兩個內部函式形成了兩個Closures.
+                        increment: increment, 
                         getValue: getValue
                 }
         }
@@ -95,59 +95,59 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
 #### 情境：使用一個有計數功能的套件(counter.js)
 
     counter.js 內容：
-    (function() {
-        var count = 0;
+    (function () {
+        function counter() {
+            var count = 0;
 
-        function defaultValue(value) {
+            function defaultValue(value) {
                 count = value;
-        }
+            }
 
-        function getValue() {
+            function getValue() {
                 return count;
-        }
+            }
 
-        function increment() {
+            function increment() {
                 count++
-        }
+            }
 
-        function decrement() {
+            function decrement() {
                 count--
-        }
+            }
 
-        function reset() {
+            function reset() {
                 count = 0;
-        }
-        
-        var counter = function () {
-                return {
-                        defaultValue: defaultValue,
-                        getValue: getValue,
-                        increment: increment,
-                        decrement: decrement,
-                        reset: reset
-                }
-        }
+            }
 
-        global.MyCounter = counter;   //與MyCounter連結,建立一個closure.
-
+            return {
+                defaultValue: defaultValue,
+                getValue: getValue,
+                increment: increment,
+                decrement: decrement,
+                reset: reset
+            }
+        }
+        global.MyCounter = counter;
     })()
 > 立即函式 IIFE (Immediately Invoked Function Expression) : 如同字義,會立即執行函式 , 用法 => (function(arg){...})(in) 或 (function(arg){...}(in)).
 
 #### i.只需在index.html引入counter.js.
 #### ii.即可在程式使用counter來做計數功能.
-        var counter = MyCounter();
+        var counter = MyCounter();  //建立第一個clourse
+        var counter2 = MyCounter(); //建立第二個clourse
         var count = 1000;
         console.log(counter.getValue()); // 0
 
-        counter.defaultValue(100); 
-        counter.increment(); 
-        counter.increment(); 
+        counter.defaultValue(100);
+        counter.increment();
+        counter.increment();
         console.log(counter.getValue()); // 102
-        
-        counter.decrement(); 
-        console.log(counter.getValue()); // 101
 
-        counter.reset();     
+        counter.decrement();
+        console.log(counter.getValue()); // 101
+        console.log(counter2.getValue()); // 0
+
+        counter.reset();
         console.log(counter.getValue()); // 0
 
 ###   Q & A 
