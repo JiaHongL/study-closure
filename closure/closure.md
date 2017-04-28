@@ -7,13 +7,13 @@
 
 ## 二、一個簡單的Closure
         function a() {
-                var count = 0;              // 區域變數,外部不能調用,間接形成私有變數.
-                function add() {            // 區域函式,外部不能調用,間接形成私有函式.
+                var count = 0;               // 區域變數,外部不能調用,間接形成私有變數.
+                function _add() {            // 區域函式,外部不能調用,間接形成私有函式.
                         count = count + 1;
                 }
 
                 function increment() {
-                        add();
+                        _add();
                 }
 
                 function getValue() {
@@ -33,6 +33,7 @@
         
 我們知道如果在函式內用var宣告變數時,就會形成區域變數,但區域變數的作用範圍只在函式內,而我們用函式來使用這些區域變數,然後再把函式return出去,與外部的變數做關連,所以可以從外部藉由調用這些函式,間接的調用函式內的區域變數/函式,這個過程就形成了Closure.
 > 會許我們已經用過了Closure,但可能並不明白這過程就是Closure的形成.
+> 加底線只是區別是私有函式.  
 
 <br />
 
@@ -95,41 +96,37 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
 #### 情境：使用一個有計數功能的套件(counter.js)
 
     counter.js 內容：
-    (function () {
-        function counter() {
-            var count = 0;
+    var MyCounter = function () {
+        var count = 0;
 
-            function defaultValue(value) {
-                count = value;
-            }
-
-            function getValue() {
-                return count;
-            }
-
-            function increment() {
-                count++
-            }
-
-            function decrement() {
-                count--
-            }
-
-            function reset() {
-                count = 0;
-            }
-
-            return {
-                defaultValue: defaultValue,
-                getValue: getValue,
-                increment: increment,
-                decrement: decrement,
-                reset: reset
-            }
+        function defaultValue(value) {
+            count = value;
         }
-        global.MyCounter = counter;
-    })()
-> 立即函式 IIFE (Immediately Invoked Function Expression) : 如同字義,會立即執行函式 , 用法 => (function(arg){...})(in) 或 (function(arg){...}(in)).
+
+        function getValue() {
+            return count;
+        }
+
+        function increment() {
+            count++;
+        }
+
+        function decrement() {
+            count--;
+        }
+
+        function reset() {
+            count = 0;
+        }
+    
+        return {
+            defaultValue: defaultValue,
+            getValue: getValue,
+            increment: increment,
+            decrement: decrement,
+            reset: reset
+        }
+    }  
 
 #### i.只需在index.html引入counter.js.
 #### ii.即可在程式使用counter來做計數功能.
@@ -160,6 +157,9 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
 ####  Q3：是否是用到'建立私有的環境,保存函式內變數的值'?
 ####  A3：當我們調用了兩次increment(),再調用getValue()時,因為Closure保存了值,就會得到102.   
 
+## 五、立即函式 IIFE
+
+> 立即函式 IIFE (Immediately Invoked Function Expression) : 如同字義,會立即執行函式 , 用法 => (function(arg){...})(in) 或 (function(arg){...}(in)).
 <br />
 
 ## 參考  

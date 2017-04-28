@@ -2,42 +2,38 @@
 // 在index.html => 引入 <script src="counter.js" type="text/javascript"></script>
 // counter.js 內的程式碼
 // ----- counter.js ------
-(function () {
-    function counter() {
-        var count = 0;
+var MyCounter = function () {
+    var count = 0;
 
-        function defaultValue(value) {
-            count = value;
-        }
-
-        function getValue() {
-            return count;
-        }
-
-        function increment() {
-            count++
-        }
-
-        function decrement() {
-            count--
-        }
-
-        function reset() {
-            count = 0;
-        }
-
-        return {
-            defaultValue: defaultValue,
-            getValue: getValue,
-            increment: increment,
-            decrement: decrement,
-            reset: reset
-        }
+    function defaultValue(value) {
+        count = value;
     }
-    global.MyCounter = counter;
-})()
-// ----- counter.js End------
 
+    function getValue() {
+        return count;
+    }
+
+    function increment() {
+        count++;
+    }
+
+    function decrement() {
+        count--;
+    }
+
+    function reset() {
+        count = 0;
+    }
+
+    return {
+        defaultValue: defaultValue,
+        getValue: getValue,
+        increment: increment,
+        decrement: decrement,
+        reset: reset
+    }
+}
+// ----- counter.js End------
 
 
 //自己的程式
