@@ -38,7 +38,7 @@
 <br />
 
 ## 三、為何Closure可以保存變數的值？
-####  i.垃圾回收機制(Garbage Collection)  
+#### i.垃圾回收機制(Garbage Collection)  
 javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不到的記憶體,而實做的方式是自動釋放完全沒有被參考的物件所佔用的記憶體.
 
     var a = {value: 1};    // a 參考 {value: 1} 這個物件
@@ -51,7 +51,18 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     delete a;              // 全域變數 a 和 b 是儲存在global Object(Key/Value),所以只是value變成null,本身還是存在.
     delete b;              // 所以使用關鍵字delete來刪除global Object中的a和b,釋放所佔的記憶體.
 
-#### ii.題外話：記憶體洩漏(Memory Leak) : 以為已釋放的記憶體,但還有reference,所以還偷偷存在著.
+### ii.題外話：By Value vs By Reference
+    var a1 = {value: 1};
+    var b1 = a1;
+    a1.value = 5;
+    var a2 = 2;
+    var b2 = a2;
+    a2 = 5;
+    console.log(b1); // {value:5}  , by Reference. (關聯到同一個物件)
+    console.log(b2); // 2 , by Value. (儲存在各自的記憶體) 
+> By Reference : Object .  By Value : String 、Number、Boolean.  
+
+#### iii.題外話：記憶體洩漏(Memory Leak) : 以為已釋放的記憶體,但還有reference,所以還偷偷存在著.
 
     var a = {value: 1};
     var b = a;
@@ -63,7 +74,7 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
 
 > 所以使用 Closure 也有可能造成 Memory Leaking,要小心使用.
 
-#### iii.如果沒有使用Closure的話,函式內的區域變數就會被自動釋放.  
+#### iv.如果沒有使用Closure的話,函式內的區域變數就會被自動釋放.  
 
     function a() {
       var count = 0;       // count沒有被參考,所以使用後佔的記憶體就會被釋放.
@@ -74,7 +85,7 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     console.log(fn);  //1
     console.log(fn);  //1
 
-#### iv.使用Closure後,函式內的區域變數間接地被外部參考,所以不會被GC.
+#### v.使用Closure後,函式內的區域變數間接地被外部參考,所以不會被GC.
 
     function a() {
       var count = 0;    // count 間接地被外部的fn參考.
@@ -170,3 +181,4 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
 - [全面了解JavaScirpt的垃圾(garbage collection)回收機制](http://www.divcss.online/divcssbuju/jsrumen/jsjichu/201612/14572.html)
 - [JavaScript 的 Garbage Collection](http://tom76kimo-blog.logdown.com/posts/177173-javascript-garbage-collection)
 - [Memory Leaks 的情況以及如何解決與偵測](http://blog.smlsun.com/2013/12/javascript-memory-leaks_3701.html)
+- [[筆記] 談談JavaScript中by reference和by value的重要觀念](https://pjchender.blogspot.tw/2016/03/javascriptby-referenceby-value.html)

@@ -68,3 +68,18 @@ console.log(a); // null
 console.log(b); // {value:1} 
 b = null; // 當b也null時,這物件{value:1}就沒有被參考(referenced),就會自動被回收,釋放記憶體.
 console.log(b); // null
+
+
+
+var a1 = {
+    value: 1
+};
+var b1 = a1;
+a1.value = 5;
+
+var a2 = 2;
+var b2 = a2;
+a2 = 5;
+
+console.log(b1); // {value:5}  , by Reference. (關聯到同一個物件)
+console.log(b2); // 2 , by Value. (儲存在各自的記憶體) 
