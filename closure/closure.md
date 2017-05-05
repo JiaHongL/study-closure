@@ -51,7 +51,7 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     delete a;              // 全域變數 a 和 b 是儲存在global Object(Key/Value),所以只是value變成null,本身還是存在.
     delete b;              // 所以使用關鍵字delete來刪除global Object中的a和b,釋放所佔的記憶體.
 
-### ii.題外話：By Value vs By Reference
+#### ii.題外話：By Value vs By Reference
     var a1 = {value: 1};
     var b1 = a1;
     a1.value = 5;
