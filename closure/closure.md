@@ -60,7 +60,8 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     a2 = 5;
     console.log(b1); // {value:5}  , by Reference. (關聯到同一個物件)
     console.log(b2); // 2 , by Value. (儲存在各自的記憶體) 
-> By Reference : Object .  By Value : String 、Number、Boolean.  
+> Javascript中沒有語法來控制By Reference 或 By Value , 取而代之的是 , 從值的類型作為判斷.
+> By Reference (複合值) : Object , Array  .  By Value (基本值) : String 、Number、Boolean.  
 
 #### iii.題外話：記憶體洩漏(Memory Leak) : 以為已釋放的記憶體,但還有reference,所以還偷偷存在著.
 
@@ -182,3 +183,4 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
 - [JavaScript 的 Garbage Collection](http://tom76kimo-blog.logdown.com/posts/177173-javascript-garbage-collection)
 - [Memory Leaks 的情況以及如何解決與偵測](http://blog.smlsun.com/2013/12/javascript-memory-leaks_3701.html)
 - [[筆記] 談談JavaScript中by reference和by value的重要觀念](https://pjchender.blogspot.tw/2016/03/javascriptby-referenceby-value.html)
+- [你所不知道的JS系列書籍]
