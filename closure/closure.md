@@ -46,8 +46,8 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     a = null;              // a 給於 null
     console.log(a);        // null
     console.log(b);        // {value:1}  , 雖然a已經null,但b還參考這個物件,所以還不會被回收.
-    b = null;              // 當b也null時,這物件{value:1}就完全沒有被參考(referenced),就會自動被回收,釋放記憶體.
-    console.log(b);        // null , {value: 1} 所佔的記憶體就會被釋放.
+    b = null;              // 當b也null時,這物件{value:1}就完全沒有被參考(referenced),就會自動被回收,釋放記憶體.  
+    console.log(b);        // null , {value: 1} 所佔的記憶體就會被釋放.
 
 #### ii.題外話：By Value vs By Reference
     var a1 = {value: 1};
@@ -56,8 +56,8 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     var a2 = 2;
     var b2 = a2;
     a2 = 5;
-    console.log(b1); // {value:5}  , by Reference. (關聯到同一個物件)
-    console.log(b2); // 2 , by Value. (儲存在各自的記憶體) 
+    console.log(b1); // {value:5}  , by Reference. (關聯到同一個物件記憶體位置)
+    console.log(b2); // 2 , by Value. (儲存在各自的記憶體位置) 
 > Javascript中沒有語法來控制By Reference 或 By Value , 取而代之的是 , 從值的類型作為判斷.    
 > By Reference (複合值) : Object 、 Array 、 Function .    
 > By Value (基本值) : String 、Number、Boolean、null、undefined.  
