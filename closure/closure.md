@@ -47,7 +47,7 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     console.log(a);        // null
     console.log(b);        // {value:1}  , 雖然a已經null,但b還參考這個物件,所以還不會被回收.
     b = null;              // 當b也null時,這物件{value:1}就完全沒有被參考(referenced),就會自動被回收,釋放記憶體.  
-    console.log(b);        // null , {value: 1} 所佔的記憶體已被釋放.
+    console.log(b);        // null , {value: 1} 所佔的記憶體已被釋放.
 
 #### ii.題外話：By Value vs By Reference
     var a1 = {value: 1};
