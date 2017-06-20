@@ -68,8 +68,8 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     var b = a;
     a = null;
     console.log(b); // {value: 1}  
-    // {value: 1} 並沒有因為a的null被釋放 , 因為還有referenced , 所以記憶體並沒有被釋放.
-    // 所以如果b沒有給於null, {value: 1} 將會繼續存在, 造成記憶體洩漏(Memory Leak).
+    // {value: 1} 並沒有因為a的null被釋放 , 因為還有referenced , 所以記憶體並沒有被釋放.  
+    // 所以如果b沒有給於null, {value: 1} 將會繼續存在, 造成記憶體洩漏(Memory Leak).  
 
 > 所以使用 Closure 也有可能造成 Memory Leaking,要小心使用.
 
