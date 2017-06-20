@@ -56,8 +56,8 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     var a2 = 2;
     var b2 = a2;
     a2 = 5;
-    console.log(b1); // {value:5}  , by Reference. (關聯到同一個物件記憶體位置)
-    console.log(b2); // 2 , by Value. (儲存在各自的記憶體位置) 
+    console.log(b1); // {value:5}  , by Reference. (關聯到同一個物件記憶體位置)  
+    console.log(b2); // 2 , by Value. (儲存在各自的記憶體位置) 
 > Javascript中沒有語法來控制By Reference 或 By Value , 取而代之的是 , 從值的類型作為判斷.    
 > By Reference (複合值) : Object 、 Array 、 Function .    
 > By Value (基本值) : String 、Number、Boolean、null、undefined.  
