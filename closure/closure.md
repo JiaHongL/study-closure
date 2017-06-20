@@ -47,7 +47,7 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     console.log(a);        // null
     console.log(b);        // {value:1}  , 雖然a已經null,但b還參考這個物件,所以還不會被回收.
     b = null;              // 當b也null時,這物件{value:1}就完全沒有被參考(referenced),就會自動被回收,釋放記憶體.  
-    console.log(b);        // null , {value: 1} 所佔的記憶體就會被釋放.
+    console.log(b);        // null , {value: 1} 所佔的記憶體已被釋放.
 
 #### ii.題外話：By Value vs By Reference
     var a1 = {value: 1};
@@ -67,9 +67,8 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
     var a = {value: 1};
     var b = a;
     a = null;
-    delete a;
     console.log(b); // {value: 1}  
-    // {value: 1} 並沒有因為a的null與delete被釋放 , 但還有referenced , 所以記憶體並沒有被釋放.
+    // {value: 1} 並沒有因為a的null被釋放 , 因為還有referenced , 所以記憶體並沒有被釋放.
     // 所以如果b沒有給於null, {value: 1} 將會繼續存在, 造成記憶體洩漏(Memory Leak).
 
 > 所以使用 Closure 也有可能造成 Memory Leaking,要小心使用.
