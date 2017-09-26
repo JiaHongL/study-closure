@@ -169,7 +169,45 @@ javascript的垃圾回收機制(Garbage Collection),會自動釋放再也用不�
 
 ## 五、立即函式 IIFE
 
-> 立即函式 IIFE (Immediately Invoked Function Expression) : 如同字義,會立即執行函式 , 用法 => (function(arg){...})(in) 或 (function(arg){...}(in)).
+> 立即函式 IIFE (Immediately Invoked Function Expression) : 如同字義,會立即執行函式 , 用法 => (function(arg){...})(in) 或 (function(arg){...}(in)).PS:建立一個IIFE也等於建立一個Closure環境.
+
+```sh
+
+    (function () {
+        console.log('IIFE');    //IIFE
+    })();
+
+```
+
+```sh
+
+    var calculate = (function (value) {
+        var count = value | 0;
+
+        function _add() {
+            count = count + 1;
+        }
+
+        function increment() {
+            _add();
+        }
+
+        function getValue() {
+            return count;
+        }
+
+        return {
+            increment: increment,
+            getValue: getValue
+        }
+    })(6);
+
+    calculate.increment();
+    calculate.increment();
+    console.log(calculate.getValue());  //8
+
+```
+
 <br />
 
 ## 參考  

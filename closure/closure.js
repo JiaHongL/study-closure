@@ -83,3 +83,34 @@ a2 = 5;
 
 console.log(b1); // {value:5}  , by Reference. (關聯到同一個物件)
 console.log(b2); // 2 , by Value. (儲存在各自的記憶體) 
+
+
+// IIFE
+var calculate = (function () {
+    var count = 0;
+
+    function _add() {
+        count = count + 1;
+    }
+
+    function increment() {
+        _add();
+    }
+
+    function getValue() {
+        return count;
+    }
+
+    return {
+        increment: increment,
+        getValue: getValue
+    }
+})();
+
+calculate.increment();
+calculate.increment();
+console.log(calculate.getValue());
+
+(function () {
+    console.log('IIFE');
+})();
